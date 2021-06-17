@@ -2,37 +2,47 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WeatherToConsole
 {
     public class WeatherData
     {
-        public CurrentWeather current { get; set; }
-        public List<FutureWeather> daily { get; set; }
+        [JsonPropertyName("current")]
+        public CurrentWeather Current { get; set; }
+        [JsonPropertyName("daily")]
+        public List<FutureWeather> DailyPredictions { get; set; }
 
     }
 
     public class CurrentWeather
     {
-        public double temp { get; set; }
-        public List<Weather> weather { get; set; }
+        [JsonPropertyName("temp")]
+        public double Temperature { get; set; }
+        [JsonPropertyName("weather")]
+        public List<Weather> WeatherDescription { get; set; }
     }
 
     public class FutureWeather
     {
-        public Temperature temp { get; set; }
-        public List<Weather> weather { get; set; }
+        [JsonPropertyName("temp")]
+        public Temperature FutureTemp { get; set; }
+        [JsonPropertyName("weather")]
+        public List<Weather> FutureWeatherDescription { get; set; }
     }
     
     public class Weather
     {
-        public string description { get; set; }
+        [JsonPropertyName("description")]
+        public string WeatherDescription { get; set; }
     }
 
     public class Temperature
     {
-        public double min { get; set; }
-        public double max { get; set; }
+        [JsonPropertyName("min")]
+        public double MinTemp { get; set; }
+        [JsonPropertyName("max")]
+        public double MaxTemp { get; set; }
     }
 }
